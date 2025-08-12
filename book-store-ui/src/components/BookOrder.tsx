@@ -1,10 +1,11 @@
 // src/components/BookOrder.tsx
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import type { Book, User } from "../types/models";
+import type { Book, User } from "../interface/models";
 import { useGetUsersQuery, useGetBooksQuery } from "../api/apiSlice";
 import { addBookToUser } from "../features/userBooks/userBookSlice";
 import type { RootState } from "../store/store";
+import "./bookOrder.css";
 
 const BookOrder: React.FC = () => {
   const { data: users = [] } = useGetUsersQuery();
@@ -20,7 +21,10 @@ const BookOrder: React.FC = () => {
   };
 
   return (
-    <div style={{ padding: 20, fontFamily: "Arial", textAlign: "left" }}>
+    <div
+      style={{ padding: 20, fontFamily: "Arial", textAlign: "left" }}
+      className="listDiv"
+    >
       <h2>User List</h2>
       <div style={{ display: "flex", gap: 10 }}>
         {users.map((user) => (
@@ -56,7 +60,7 @@ const BookOrder: React.FC = () => {
               borderRadius: 4,
             }}
           >
-            {book.title}
+            {book.name}
           </button>
         ))}
       </div>
@@ -73,7 +77,7 @@ const BookOrder: React.FC = () => {
             <strong>{user.name}</strong>
             <ul>
               {(userBooks[user.id] || []).map((book) => (
-                <li key={book.id}>{book.title}</li>
+                <li key={book.id}>{book.name}</li>
               ))}
             </ul>
           </div>

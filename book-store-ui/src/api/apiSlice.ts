@@ -1,21 +1,21 @@
 // src/api/apiSlice.ts
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
-import type { Book, User } from '../types/models';
+import type { Book, User } from '../interface/models';
 
 export const api = createApi({
   reducerPath: "api",
   baseQuery: fetchBaseQuery({ baseUrl: "/" }),
   endpoints: (builder) => ({
     getUsers: builder.query<User[], void>({
-      query: () => "https://localhost:7240/api/User/all",
+      query: () => "https://f292xeazh9.execute-api.ap-south-1.amazonaws.com/dev/users",
       transformResponse: (response: { data: User[] }) => response.data,
     }),
     getBooks: builder.query<Book[], void>({
-      query: () => "https://localhost:7253/api/Book/all",
-      transformResponse: (response: { data: any[] }) =>
+      query: () => "https://f292xeazh9.execute-api.ap-south-1.amazonaws.com/dev/users",
+      transformResponse: (response: { data: Book[] }) =>
         response.data.map((book) => ({
           id: book.id,
-          title: book.name,
+          name: book.name,
         })),
     }),
   }),

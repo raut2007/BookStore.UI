@@ -5,5 +5,5 @@ export interface User {
 
 export interface Book {
   id: number;
-  title: string;
+  name: string;
 }
