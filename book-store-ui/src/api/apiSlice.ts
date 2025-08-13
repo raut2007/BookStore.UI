@@ -7,11 +7,11 @@ export const api = createApi({
   baseQuery: fetchBaseQuery({ baseUrl: "/" }),
   endpoints: (builder) => ({
     getUsers: builder.query<User[], void>({
-      query: () => "https://f292xeazh9.execute-api.ap-south-1.amazonaws.com/dev/users",
+      query: () => "https://svzzzjq79f.execute-api.ap-south-1.amazonaws.com/dev/api/users",
       transformResponse: (response: { data: User[] }) => response.data,
     }),
     getBooks: builder.query<Book[], void>({
-      query: () => "https://f292xeazh9.execute-api.ap-south-1.amazonaws.com/dev/users",
+      query: () => "https://svzzzjq79f.execute-api.ap-south-1.amazonaws.com/dev/api/books",
       transformResponse: (response: { data: Book[] }) =>
         response.data.map((book) => ({
           id: book.id,
